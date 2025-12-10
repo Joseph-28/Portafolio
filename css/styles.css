@@ -1,0 +1,253 @@
+
+/*== Fuentes del proyecto ==*/
+
+/*Bitcount*/
+@font-face {
+    font-family: 'Bitcount';
+    src: url('/fonts/Bitcount/BitcountPropSingle.ttf') format('truetype');
+    font-weight: 400;
+}
+
+/*Orbitron*/
+@font-face {
+    font-family: 'Orbitron';
+    src: url('/fonts/Orbitron/Orbitron-VariableFont.ttf') format('truetype');
+    font-weight: 400;
+}
+
+/*Roboto*/
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto/Roboto.ttf') format('truetype');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto/Roboto-VariableFont.ttf') format('truetype');
+    font-weight: 400;
+}
+
+/*== Definición de textos ==*/
+body, p, span, li{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Bitcount', sans-serif;
+    letter-spacing: 1px;
+}
+
+.nav-menu a, .menu-item{
+    font-family: 'Bitcount', sans-serif;
+}
+
+/*== Header ==*/
+.site-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    position: relative;
+    top: 0;
+    z-index: 100;
+    background-color: white;
+}
+
+.header-lef .header-logo{
+    height: 0px;
+    width: auto;
+    object-fit: fill;
+}
+
+.nav-menu ul {
+    display: flex;
+    gap: 35px;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.nav-menu a{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    text-decoration: none;
+    color: #333333;
+    opacity: 1;
+    transition: 0.25s ease;
+}
+
+.nav-menu a:hover {
+    opacity: 1;
+    transition: 5s;
+    text-decoration: underline;
+}
+
+.main-content{
+    background-color: whitesmoke;
+    align-items: center;
+    display: flow-root;
+    width: auto;
+    height: auto;
+    padding: 100PX;
+    border-radius: 5%;
+    text-align: center;
+    color: #333333;
+}
+
+/* ----- VARIABLES ----- */
+:root {
+  --header-c: 100%;   /* ancho del header izquierdo cerrado */
+  --header-o: 20%;   /* ancho del header izquierdo cerrado */
+  --section-gap: 20px; /* gap entre header y contenido */
+  --closed-max-height: 180px; /* altura máxima de la sección cerrada */
+  --open-max-height: 2000px;  /* suficiente para mostrar el contenido cuando esté abierto */
+}
+
+/* ==== CONTENEDOR DE LAS SECCIONES ==== */
+.main-sections {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+
+/* ==== CADA SECCIÓN ==== */
+.section {
+    border: 2px solid #333333;
+    border-radius: 12px;
+    transition: border-color 0.25s ease, max-height 0.35s ease;
+    overflow: hidden;
+
+    /* Layout horizontal: HEADER IZQ | CONTENT DCH */
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--section-gap);
+
+    /* ALTURA cuando está cerrado (máxima) */
+    max-height: var(--closed-max-height);
+    max-width: 50%;
+    min-width: 50%;
+    position: relative;
+    background: #333333;
+}
+
+/* estado abierto: permite crecer */
+.section.open {
+    max-height: var(--open-max-height);
+    min-width: 80%;
+    max-width: 80%;
+    border-radius: 5%;
+}
+
+/* hover */
+.section:hover {opacity: 80%;}
+
+
+/* ==== HEADER DE LA SECCIÓN (IZQUIERDA) ==== */
+.section-header {
+    width: var(--header-c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px;
+    cursor: pointer;
+
+    /* mientras cerrado: altura y centrado (heredado del .section) */
+    /* Para que el bloque esté centrado vertical+horizontal */
+}
+
+.section-header .head-block {
+    width: var(--header-o);
+    flex: 0 0 var(--header-o);  /* ancho fijo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+/* Al abrir: alinear el header hacia el centro */
+.section.open .section-header {
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+}
+
+/* TÍTULO y SUBTÍTULO */
+.section-header .title {
+    color: whitesmoke;
+    margin: 0;
+    font-family: 'Bitcount', sans-serif;
+    font-size: 1.25rem;
+    line-height: 1.05;
+}
+
+.section-header .subtitle {
+    color: whitesmoke;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+
+/* Flecha */
+.section-header .arrow {
+    margin-top: 8px;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+.section-header.open .arrow { transform: rotate(180deg); }
+
+
+/* ==== CONTENIDO OCULTO (DERECHA) ==== */
+.section-content {
+    flex: 1 1 auto;       
+    width: 0;             /* cerrado -> 0 */
+    overflow: hidden;
+    opacity: 0;
+    padding: 0;    
+
+    display: block;
+    transition: width 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    border-left: 2px solid whitesmoke; /* separación visual */
+    background: #212121;
+}
+
+/* Abierto: le damos ancho relativo al contenedor;
+   NOTA: el JS ajustará la propiedad --content-w si es necesario. */
+.section-content.open {
+    width: 100%;
+    opacity: 1;
+    padding: 18px;
+}
+
+/* Contenido interno: */
+.section-content p {
+    margin: 0 0 10px 0;
+    font-family: 'Roboto', sans-serif;
+    color: whitesmoke;
+    line-height: 1.5;
+}
+
+/* Ajustes responsivos: en pantallas muy pequeñas, convertir en vertical */
+@media (max-width: 720px) {
+
+    .section {
+        flex-direction: column;
+        max-height: auto;
+    }
+
+    .section-content,
+    .section.open .section-content {
+        width: auto !important;
+        height: auto;
+        border-left: none;
+        border-top: 2px solid #222;
+    }
+
+    .section-header { width: auto; flex: 0 0 auto; }
+}
