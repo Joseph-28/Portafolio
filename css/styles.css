@@ -94,6 +94,23 @@ h1, h2, h3, h4, h5, h6{
     text-align: center;
     color: #333333;
 }
+/*== Footer ==*/
+footer {
+    padding: 20px 0;
+    background: #ffffff;
+    text-align: center;
+}
+
+.footer-icons a {
+    margin: 0 15px;
+    font-size: 28px;
+    color: #333333;
+    transition: 0.3s ease;
+}
+
+.footer-icons a:hover {
+    color: #8f8f8f;
+}
 
 /* ----- VARIABLES ----- */
 :root {
