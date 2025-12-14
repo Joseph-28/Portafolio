@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio | Joseph González Herrera</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="header-left">
+        <img src="imgs/logo.png" alt="Logo" class="header-logo">
+    </div>
+
+    <nav class="nav-menu">
+        <ul>
+            <li><a href="index.html">Sobre mí</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Proyectos ▾</a>
+                <div class="dropdown-content">
+                    <a href="software.html">Software</a>
+                    <a href="videojuegos.html">Videojuegos</a>
+                </div>
+            </li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <main class="main-content">
+        <h1>MIS PROYECTOS</h1>
+        <p style="margin-bottom: 5%;">Proyectos de desarrollo de software en los que he trabajado</p>
+
+        <h1 style="margin-top: 10%;">Todos los proyectos</h1>
+        <p>Todos los proyectos que he desarrollado o participado en su desarrollo</p>
+        <div class="projects-container">
+
+            <div class="project-card">
+                <div class="carousel"
+                    data-images='["imgs/tareas/01.png", "imgs/tareas/02.png", "imgs/tareas/03.png", "imgs/tareas/04.png", "imgs/tareas/05.png", "imgs/tareas/06.png", "imgs/tareas/07.png"]'>
+                </div>
+
+                <h3>Organizador de tareas</h3>
+                <h5>Visual Studio | HTML - JavaScript - CSS - C# - SQLite</h5>
+                <p>Proyecto para la organización de tareas, que busca ordenar los pendientes de una mejor manera </p>
+            </div>
+
+            <div class="project-card">
+                <div class="carousel"
+                    data-images='["imgs/UAbierta/01.png", "imgs/UAbierta/02.png", "imgs/UAbierta/03.png", "imgs/UAbierta/04.png", "imgs/UAbierta/05.png", "imgs/UAbierta/06.png", "imgs/UAbierta/07.png"]'>
+                </div>
+
+                <h3>UAbierta</h3>
+                <h5>Visual Studio | C# - JavaScript - HTML - RAZOR - SQL</h5>
+                <p>Proyecto universitario en el que se buscaba mejorar el manejo de las propuestas de profesores a nuevos cursos académicos</p>
+            </div>
+
+            <div class="project-card">
+                <div class="carousel"
+                    data-images='["imgs/Pass/01.jpg", "imgs/Pass/02.jpg", "imgs/Pass/03.jpg", "imgs/Pass/04.jpg", "imgs/Pass/05.jpg", "imgs/Pass/06.jpg"]'>
+                </div>
+
+                <h3>PassManager</h3>
+                <h5>Creado en Visual Studio | XAML - C#</h5>
+                <p>Proyecto para el guardado de contraseñas de manera local en andrioid</p>
+
+                <a href="https://drive.google.com/file/d/1dpneICBp2d7wCwA1axnxAKEQGkbXehbI/view?usp=sharing" class="btn">Descargar</a>
+            </div>
+
+
+        </div>
+        <script>
+            document.querySelectorAll('.carousel').forEach(carousel => {
+
+                const imgs = JSON.parse(carousel.getAttribute('data-images'));
+                console.log("Cargando imágenes para:", carousel, imgs);
+                let i = 0;
+
+                function changeImage() {
+                    // Fade out
+                    carousel.style.opacity = 0;
+
+                    setTimeout(() => {
+                        // Cambiar imagen cuando está invisible
+                        carousel.style.backgroundImage = `url(${imgs[i]})`;
+
+                        // Fade in
+                        carousel.style.opacity = 1;
+
+                        // Siguiente imagen
+                        i = (i + 1) % imgs.length;
+
+                    }, 500); // debe coincidir con transition del CSS
+                }
+
+                changeImage();
+                setInterval(changeImage, 5000); // cambia cada 3 segundos
+            });
+        </script>
+
+    </main>
+</body>
+<!-- FOOTER -->
+<footer>
+    <div class="footer-icons">
+        <a href="https://www.youtube.com/@JosephGHIndieGames" target="_blank">
+            <i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/in/joseph-gonzález-herrera/" target="_blank">
+            <i class="fab fa-linkedin"></i></a>
+        <a href="https://www.patreon.com/c/JosephGHIndieGames" target="_blank">
+            <i class="fab fa-patreon"></i></a>
+
+    </div>
+</footer>
+
+
+</html>
