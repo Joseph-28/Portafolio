@@ -1,5 +1,5 @@
 
-/*== Fuentes del proyecto ==*/
+/*==================== Fuentes del proyecto ====================*/
 
 /*Bitcount*/
 @font-face {
@@ -27,9 +27,24 @@
     font-weight: 400;
 }
 
-/*== Definición de textos ==*/
+/*==================== Variables ====================*/
+:root{
+    --color-dark: #333;
+    --color-light: whitesmoke;
+    --color-bg-dark: #212121;
+    --radius: 12px;
+    --gap: 20px;
+    --header-width: 100%;
+    --header-block-width: 20%;
+    --section-closed-h: 180px;
+    --section-open-h: 2000px;
+}
+
+/*==================== Definición de textos ====================*/
 body, p, span, li{
     font-family: 'Roboto', sans-serif;
+    color: var(--color-dark);
+    margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6{
@@ -41,73 +56,53 @@ h1, h2, h3, h4, h5, h6{
     font-family: 'Bitcount', sans-serif;
 }
 
-/*== Header ==*/
+/*==================== Header ====================*/
 .site-header{
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0;
     position: sticky;
     top: 0;
     z-index: 100;
     background-color: white;
 }
 
-.header-lef .header-logo{
-    height: 0px;
-    width: auto;
-    object-fit: fill;
-}
-.nav-menu{
-    margin-right: 5%;
-}
 .nav-menu ul {
     display: flex;
     gap: 35px;
     list-style: none;
     padding: 0px;
     margin: 0px;
+    margin-right: 20px;
 }
 
 .nav-menu a{
     font-family: 'Orbitron', sans-serif;
-    font-size: 1rem;
     text-decoration: none;
-    color: #333333;
-    opacity: 1;
+    color: var(--color-dark);
     transition: 0.25s ease;
 }
 
 .nav-menu a:hover {
-    opacity: 1;
-    transition: 5s;
     text-decoration: underline;
 }
 
+/* ==================== Main ==================== */
 .main-content{
-    background-color: whitesmoke;
-    align-items: center;
-    display: flow-root;
-    width: auto;
-    height: auto;
+    background: var(--color-light);
     padding: 100PX;
     border-radius: 5%;
     text-align: center;
-    color: #333333;
 }
-/* == Dropdown == */
+/* ==================== Dropdown ==================== */
 .dropdown {
     position: relative;
-    display: inline-block;
 }
 
 /* Botón principal */
 .dropbtn {
     padding: 10px 15px;
     color: white;
-    text-decoration: none;
-    font-size: 18px;
     cursor: pointer;
 }
 
@@ -115,11 +110,10 @@ h1, h2, h3, h4, h5, h6{
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #333333;
+    background-color: var(--color-dark);
     min-width: 180px;
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
-    z-index: 10;
 }
 
 /* Links dentro del dropdown */
@@ -141,12 +135,12 @@ h1, h2, h3, h4, h5, h6{
     display: block;
 }
 
-/* Opcional: cambiar color del botón cuando se despliega */
+/* Cambiar color del botón cuando se despliega */
 .dropdown:hover .dropbtn {
     color: #aaaaaa;
 }
 
-/*== Footer ==*/
+/* ==================== Footer  ==================== */
 footer {
     padding: 20px 0;
     background: #ffffff;
@@ -156,7 +150,7 @@ footer {
 .footer-icons a {
     margin: 0 15px;
     font-size: 28px;
-    color: #333333;
+    color: var(--color-dark);
     transition: 0.3s ease;
 }
 
@@ -164,16 +158,7 @@ footer {
     color: #8f8f8f;
 }
 
-/* ----- VARIABLES ----- */
-:root {
-  --header-c: 100%;   /* ancho del header izquierdo cerrado */
-  --header-o: 20%;   /* ancho del header izquierdo cerrado */
-  --section-gap: 20px; /* gap entre header y contenido */
-  --closed-max-height: 180px; /* altura máxima de la sección cerrada */
-  --open-max-height: 2000px;  /* suficiente para mostrar el contenido cuando esté abierto */
-}
-
-/* ==== CONTENEDOR DE LAS SECCIONES ==== */
+/* ==================== CONTENEDOR DE LAS SECCIONES ==================== */
 .main-sections {
     padding: 40px;
     display: flex;
@@ -184,31 +169,25 @@ footer {
 
 /* ==== CADA SECCIÓN ==== */
 .section {
-    border: 2px solid #333333;
-    border-radius: 12px;
+    border: 2px solid var(--color-dark);
+    border-radius: var(--radius);
     transition: border-color 0.25s ease, max-height 0.35s ease;
     overflow: hidden;
 
     /* Layout horizontal: HEADER IZQ | CONTENT DCH */
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: var(--section-gap);
+    gap: var(--gap);
 
-    /* ALTURA cuando está cerrado (máxima) */
-    max-height: var(--closed-max-height);
-    max-width: 50%;
-    min-width: 50%;
-    position: relative;
-    background: #333333;
+    /* ALTURA cuando está cerrado */
+    max-height: var(--section-closed-h);
+    width: 50%;
+    background: var(--color-dark);
 }
 
 /* estado abierto: permite crecer */
 .section.open {
-    max-height: var(--open-max-height);
-    min-width: 80%;
-    max-width: 80%;
-    border-radius: 5%;
+    max-height: var(--section-open-h);
+    width: 80%;
 }
 
 /* hover */
@@ -217,110 +196,82 @@ footer {
 
 /* ==== HEADER DE LA SECCIÓN (IZQUIERDA) ==== */
 .section-header {
-    width: var(--header-c);
+    width: var(--header-width);
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     padding: 12px;
     cursor: pointer;
-
     /* mientras cerrado: altura y centrado (heredado del .section) */
     /* Para que el bloque esté centrado vertical+horizontal */
 }
 
 .section-header .head-block {
-    width: var(--header-o);
-    flex: 0 0 var(--header-o);  /* ancho fijo */
+    width: var(--header-block-width);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 6px;
-}
-
-/* Al abrir: alinear el header hacia el centro */
-.section.open .section-header {
-    align-items: center;
-    justify-content: center;
-    padding: 18px;
 }
 
 /* TÍTULO y SUBTÍTULO */
 .section-header .title {
-    color: whitesmoke;
+    color: var(--color-light);
     margin: 0;
-    font-family: 'Bitcount', sans-serif;
     font-size: 1.25rem;
-    line-height: 1.05;
 }
 
 .section-header .subtitle {
-    color: whitesmoke;
+    color: var(--color-light);
     margin: 0;
-    font-family: 'Roboto', sans-serif;
     font-size: 0.85rem;
     opacity: 0.7;
 }
 
-/* Flecha */
-.section-header .arrow {
-    margin-top: 8px;
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
-}
-.section-header.open .arrow { transform: rotate(180deg); }
-
-
 /* ==== CONTENIDO OCULTO (DERECHA) ==== */
 .section-content {
-    flex: 1 1 auto;       
-    width: 0;             /* cerrado -> 0 */
-    overflow: hidden;
+    flex: 1;       
+    width: 0;
     opacity: 0;
     padding: 0;    
-
-    display: block;
-    transition: width 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    transform: translateX(20px);
+    transition: 0.3s ease;
     border-left: 2px solid whitesmoke; /* separación visual */
-    background: #212121;
+    background: var(--color-bg-dark);
 }
 
 /* Abierto: le damos ancho relativo al contenedor;
    NOTA: el JS ajustará la propiedad --content-w si es necesario. */
 .section-content.open {
-    width: 100%;
+    flex: 0 0 50%;
+    display: 100%;
+    transform: translateX(0);
     opacity: 1;
     padding: 18px;
 }
 
 /* Contenido interno: */
 .section-content p {
-    margin: 0 0 10px 0;
-    font-family: 'Roboto', sans-serif;
-    color: whitesmoke;
+    margin-bottom: 10px;
+    color: var(--color-light);
     line-height: 1.5;
 }
 
-/* Ajustes responsivos: en pantallas muy pequeñas, convertir en vertical */
+/* ==================== Responsive ==================== */
 @media (max-width: 720px) {
 
     .section {
         flex-direction: column;
-        max-height: auto;
+        width: 100%;
     }
 
-    .section-content,
-    .section.open .section-content {
+    .section-content {
         width: auto !important;
-        height: auto;
         border-left: none;
         border-top: 2px solid #222;
     }
-
-    .section-header { width: auto; flex: 0 0 auto; }
 }
-
+/* ==================== Proyectos ==================== */
 .projects-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -332,7 +283,6 @@ footer {
   background: #1e1e1e;
   border-radius: 16px;
   padding: 15px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -346,7 +296,6 @@ footer {
 
 /* Carrusel */
 .carousel {
-  width: 100%;
   height: 180px;
   border-radius: 12px;
   background-size: cover;
@@ -355,35 +304,24 @@ footer {
 }
 
 /* Textos y botón */
-.project-card h3 {
+.project-card h3, .project-card p  {
   margin: 0;
-  font-size: 1.3em;
-  color: whitesmoke;
-}
-.project-card h5{
-    margin: 0%;
-}
-
-.project-card p {
-  color: whitesmoke;
-  font-size: 0.95em;
-  margin: 0%;
+  color: var(--color-light);
 }
 
 .btn {
   margin-top: auto;
   padding: 10px 15px;
-  background: whitesmoke;
-  color: #333333;
-  text-decoration: none;
+  background: var(--color-light);
+  color: var(--color-dark);
   text-align: center;
   border-radius: 10px;
+  text-decoration: none;
   transition: background 0.2s;
 }
 
 .btn:hover {
-  background: #333333;
-  color: whitesmoke;
-  text-decoration: underline;
+  background: var(--color-dark);
+  color: var(--color-light);
 }
 
