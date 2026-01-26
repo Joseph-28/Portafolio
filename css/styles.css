@@ -258,20 +258,6 @@ footer {
     line-height: 1.5;
 }
 
-/* ==================== Responsive ==================== */
-@media (max-width: 720px) {
-
-    .section {
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .section-content {
-        width: auto !important;
-        border-left: none;
-        border-top: 2px solid #222;
-    }
-}
 /* ==================== Proyectos ==================== */
 .projects-container {
   display: grid;
@@ -324,5 +310,41 @@ footer {
 .btn:hover {
   background: var(--color-dark);
   color: var(--color-light);
+}
+
+/* ==================== Responsive ==================== */
+@media (max-width: 720px) {
+    
+    /*== Header ==*/
+    .nav-menu ul {
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        margin-right: 0;
+    }
+
+    /*== Secciones ==*/
+    .section {
+        text-align: center;
+        min-width: 150%;
+        flex-direction: column;
+    }
+    .section-content {
+        border-left: none;
+        border-top: 2px solid whitesmoke;
+        overflow: hidden;
+
+        max-height: 0;
+    }
+    .section-content.open{
+        width: 90%;
+        max-height: 100%;
+    }
+
+    /*== Proyectos ==*/
+    .projects-container{
+        flex-direction: column;
+        justify-content: center;
+    }
 }
 
